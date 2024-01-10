@@ -16,6 +16,10 @@ public class Equipe extends Personne {
 
     private List<Personne> equipe = new ArrayList<>();
 
+    public Equipe(String nom, String prenom, boolean directeur) {
+        super(nom, prenom, directeur);
+    }
+
     public Equipe(String nom, String prenom, boolean status, String nomE, List<Personne> equipe) {
         super(nom, prenom, status);
         this.nomE = nomE;

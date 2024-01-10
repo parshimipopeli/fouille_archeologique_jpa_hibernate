@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "objetTrouvé")
-public class Objet {
+public class ObjetCherche {
 
     @Id
     @GeneratedValue
@@ -13,13 +13,16 @@ public class Objet {
     private Integer numero;
     @Column(name = "designationOjet")
     private String designation;
-    @Column(name = "etatConservationObjet")
-    private Boolean etatConservation;
+    @Column(name = "etatConservation")
+    private Boolean aRestaurer;
 
-    public Objet(Integer numero, String designation, Boolean etatConservation) {
+    public ObjetCherche() {
+    }
+
+    public ObjetCherche(Integer numero, String designation, Boolean aRestaurer) {
         this.numero = numero;
         this.designation = designation;
-        this.etatConservation = etatConservation;
+        this.aRestaurer = aRestaurer;
     }
 
     public Integer getNumero() {
@@ -39,10 +42,10 @@ public class Objet {
     }
 
     public Boolean getEtatConservation() {
-        return etatConservation;
+        return aRestaurer;
     }
 
-    public void setEtatConservation(Boolean etatConservation) {
-        this.etatConservation = etatConservation;
+    public void setEtatConservation(Boolean aRestaurer) {
+        this.aRestaurer = aRestaurer;
     }
 }
