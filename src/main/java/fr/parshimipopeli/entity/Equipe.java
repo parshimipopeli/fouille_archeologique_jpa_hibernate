@@ -7,20 +7,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "equipeChercheur")
-public class Equipe extends Personne {
+public class Equipe extends Chercheur {
     @Id
     @GeneratedValue
     private Long id;
     @Column(name = "nomEquipe")
     private String nomE;
 
-    private List<Personne> equipe = new ArrayList<>();
+    private List<Chercheur> equipe = new ArrayList<>();
 
     public Equipe(String nom, String prenom, boolean directeur) {
         super(nom, prenom, directeur);
     }
 
-    public Equipe(String nom, String prenom, boolean status, String nomE, List<Personne> equipe) {
+    public Equipe(String nom, String prenom, boolean status, String nomE, List<Chercheur> equipe) {
         super(nom, prenom, status);
         this.nomE = nomE;
         this.equipe = equipe;
@@ -44,11 +44,11 @@ public class Equipe extends Personne {
         this.nomE = nomE;
     }
 
-    public List<Personne> getEquipe() {
+    public List<Chercheur> getEquipe() {
         return equipe;
     }
 
-    public void setEquipe(List<Personne> equipe) {
+    public void setEquipe(List<Chercheur> equipe) {
         this.equipe = equipe;
     }
 }

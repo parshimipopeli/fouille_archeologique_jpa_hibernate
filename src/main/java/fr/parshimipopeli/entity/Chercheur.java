@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "personnel")
-public class Personne {
+public class Chercheur {
 
     @Id
     @GeneratedValue
@@ -17,10 +17,10 @@ public class Personne {
     @Column(name = "directeurPersonne")
     private boolean directeur;
 
-    public Personne() {
+    public Chercheur() {
     }
 
-    public Personne(String nom, String prenom, boolean directeur) {
+    public Chercheur(String nom, String prenom, boolean directeur) {
         this.nom = nom;
         this.prenom = prenom;
         this.directeur = directeur;

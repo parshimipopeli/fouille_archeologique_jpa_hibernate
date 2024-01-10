@@ -11,6 +11,7 @@ public class Categorie {
     private Long id;
     @Column(name = "categorie")
     private String categorie;
+
     public Categorie() {
     }
 
