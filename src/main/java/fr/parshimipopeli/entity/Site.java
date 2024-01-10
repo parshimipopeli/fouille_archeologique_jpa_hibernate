@@ -11,7 +11,7 @@ public class Site {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long site_id;
     @Column(name = "villeProche")
     private String ville;
 
@@ -20,18 +20,18 @@ public class Site {
     public Site() {
     }
 
-    public Site(Long id, String ville, List<Parcelle> parcelleList) {
-        this.id = id;
+    public Site(Long site_id, String ville, List<Parcelle> parcelleList) {
+        this.site_id = site_id;
         this.ville = ville;
         this.parcelleList = parcelleList;
     }
 
-    public Long getId() {
-        return id;
+    public Long getSite_id() {
+        return site_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSite_id(Long site_id) {
+        this.site_id = site_id;
     }
 
     public String getVille() {

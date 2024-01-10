@@ -16,6 +16,9 @@ public class Parcelle {
     @Column(name = "largeurParcelle")
     private Float largeur;
 
+    @ManyToOne @JoinColumn(name = "site_id")
+    private Site site;
+
     public Parcelle() {
     }
 
