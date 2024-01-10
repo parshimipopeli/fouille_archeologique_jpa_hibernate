@@ -14,13 +14,16 @@ public class Personne {
     @Column(name = "prenomPersonne")
     private String prenom;
 
-    @Column(name = "statusPersonne")
-    private boolean status;
+    @Column(name = "directeurPersonne")
+    private boolean directeur;
 
-    public Personne(String nom, String prenom, boolean status) {
+    public Personne() {
+    }
+
+    public Personne(String nom, String prenom, boolean directeur) {
         this.nom = nom;
         this.prenom = prenom;
-        this.status = status;
+        this.directeur = directeur;
     }
 
     public Long getId() {
@@ -47,11 +50,11 @@ public class Personne {
         this.prenom = prenom;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isDirecteur() {
+        return directeur;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setDirecteur(boolean directeur) {
+        this.directeur = directeur;
     }
 }
