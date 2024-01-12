@@ -2,15 +2,21 @@ package fr.parshimipopeli.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "categorieObjet")
 public class Categorie {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long id_categorie;
     @Column(name = "categorie")
     private String categorie;
+
+    @OneToMany
+    private List<ObjetCherche> listObjet = new ArrayList<>();
 
     public Categorie() {
     }
@@ -20,11 +26,11 @@ public class Categorie {
     }
 
     public Long getId() {
-        return id;
+        return id_categorie;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.id_categorie = id;
     }
 
     public String getCategorie() {
@@ -34,4 +40,5 @@ public class Categorie {
     public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
+
 }

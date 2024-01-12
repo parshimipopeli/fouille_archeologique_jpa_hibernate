@@ -5,6 +5,7 @@ import fr.parshimipopeli.dao.Dao;
 import fr.parshimipopeli.entity.Site;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,36 @@ public class SiteDaoJpa implements Dao<Site, Long> {
      */
     @Override
     public List<Site> findAll() {
-        return null;
+
+        List<Site> sites = new ArrayList<>();
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = Singleton
+                    .getInstance()
+                    .getEmf("archeology-jpa")
+                    .createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            TypedQuery<Site> query = em
+                    .createQuery("SELECT sit FROM Site sit", Site.class);
+            // Recuperer mes resultats de requete
+            sites = query.getResultList();
+            // Envoie et valide la communication
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return sites;
     }
 
     /**
@@ -39,7 +69,34 @@ public class SiteDaoJpa implements Dao<Site, Long> {
      */
     @Override
     public Site create(Site newObj) {
-        return null;
+
+        Site site = null;
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = Singleton
+                    .getInstance()
+                    .getEmf("archeology-jpa")
+                    .createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            // Recuperer mon resultats de requete
+            site = em.merge(newObj);
+            // Envoie et valide la communication
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return site;
     }
 
     /**

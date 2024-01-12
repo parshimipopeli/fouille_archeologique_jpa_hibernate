@@ -17,6 +17,10 @@ public class Chercheur {
     @Column(name = "directeurPersonne")
     private boolean directeur;
 
+    @ManyToOne
+    @JoinColumn(name = "equipe_id")
+    private Equipe equipeChecheur;
+
     public Chercheur() {
     }
 
@@ -57,4 +61,5 @@ public class Chercheur {
     public void setDirecteur(boolean directeur) {
         this.directeur = directeur;
     }
+
 }

@@ -2,6 +2,8 @@ package fr.parshimipopeli.entity;
 
 import jakarta.persistence.*;
 
+import java.util.StringJoiner;
+
 @Entity
 @Table
 public class Parcelle {
@@ -22,8 +24,7 @@ public class Parcelle {
     public Parcelle() {
     }
 
-    public Parcelle(Long id, Integer numero, Float longueur, Float largeur) {
-        this.id = id;
+    public Parcelle(Integer numero, Float longueur, Float largeur) {
         this.numero = numero;
         this.longueur = longueur;
         this.largeur = largeur;
@@ -59,5 +60,16 @@ public class Parcelle {
 
     public void setLargeur(Float largeur) {
         this.largeur = largeur;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Parcelle.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("numero=" + numero)
+                .add("longueur=" + longueur)
+                .add("largeur=" + largeur)
+                .add("site=" + site)
+                .toString();
     }
 }
