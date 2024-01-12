@@ -2,7 +2,9 @@ package fr.parshimipopeli.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "dateDeFouille")
@@ -15,11 +17,17 @@ public class DateFouille {
     @Column(name = "date")
     private Date date;
 
+    @ManyToMany(mappedBy = "fouilleList")
+//    @JoinTable( name = "Site_DateFouille",
+//        joinColumns = @JoinColumn(name = "id_dateFouille"),
+//        inverseJoinColumns = @JoinColumn(name = "id_site"))
+    List<Site> listeSite = new ArrayList<>();
+
+
     public DateFouille() {
     }
 
-    public DateFouille(Long id, Date date) {
-        this.id = id;
+    public DateFouille(Date date) {
         this.date = date;
     }
 
@@ -38,4 +46,5 @@ public class DateFouille {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }

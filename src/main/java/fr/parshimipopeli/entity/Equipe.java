@@ -7,33 +7,26 @@ import java.util.List;
 
 @Entity
 @Table(name = "equipeChercheur")
-public class Equipe extends Chercheur {
+public class Equipe {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long equipe_id;
     @Column(name = "nomEquipe")
     private String nomE;
 
+    @OneToMany
     private List<Chercheur> equipe = new ArrayList<>();
 
-    public Equipe(String nom, String prenom, boolean directeur) {
-        super(nom, prenom, directeur);
+    public Equipe(String nom) {
+        this.nomE = nom;
     }
 
-    public Equipe(String nom, String prenom, boolean status, String nomE, List<Chercheur> equipe) {
-        super(nom, prenom, status);
-        this.nomE = nomE;
-        this.equipe = equipe;
+    public Long getEquipe_id() {
+        return equipe_id;
     }
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
+    public void setEquipe_id(Long equipe_id) {
+        this.equipe_id = equipe_id;
     }
 
     public String getNomE() {
@@ -42,14 +35,6 @@ public class Equipe extends Chercheur {
 
     public void setNomE(String nomE) {
         this.nomE = nomE;
-    }
-
-    public List<Chercheur> getEquipe() {
-        return equipe;
-    }
-
-    public void setEquipe(List<Chercheur> equipe) {
-        this.equipe = equipe;
     }
 }
 

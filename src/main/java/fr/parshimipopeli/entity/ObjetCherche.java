@@ -15,6 +15,9 @@ public class ObjetCherche {
     private String designation;
     @Column(name = "etatConservation")
     private Boolean aRestaurer;
+    @ManyToOne
+    @JoinColumn(name = "id_categorie")
+    private Categorie categorieObjet;
 
     public ObjetCherche() {
     }
@@ -23,6 +26,14 @@ public class ObjetCherche {
         this.numero = numero;
         this.designation = designation;
         this.aRestaurer = aRestaurer;
+    }
+
+    public ObjetCherche(Long id, Integer numero, String designation, Boolean aRestaurer, Categorie categorieObjet) {
+        this.id = id;
+        this.numero = numero;
+        this.designation = designation;
+        this.aRestaurer = aRestaurer;
+        this.categorieObjet = categorieObjet;
     }
 
     public Integer getNumero() {
